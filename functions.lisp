@@ -34,3 +34,36 @@
     (t (member* x (cdr y)))))
 
 (print (member* 'a '(a b c)))
+
+
+(defun pairlis* (x y a)
+  (cond 
+    ((null x) a)
+    (t (cons (cons (car x) (car y)) (pairlis* (cdr x) (cdr y) a)))))
+
+(print (pairlis* '(a b c) '(d e f) nil))
+
+
+(defun assoc* (x y)
+  (cond 
+    ((null y) nil)
+    ((equal x (caar y)) (car y))
+    (t (assoc* x (cdr y)))))
+
+(print (assoc* 'a '((a b) (c d) (e f))))
+
+
+(defun sub2* (x y)
+  (cond 
+    ((null x) y)
+    ((equal (car (car x)) y) (cdr (car x)))
+    (t sub2* (cdr x) y)))
+
+(print (sub2* '((a b) (c d) (e f)) 'a))
+
+
+(defun sublis* (x y)
+  (cond 
+    ((atom y) (sub2* x y))
+    (t (cons (sublis* x (car y)) (sublis* x (cdr y))))
+    ))
