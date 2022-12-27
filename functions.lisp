@@ -1,4 +1,3 @@
-
 (defun eq* (x y)
   (cond 
     ((atom x) (cond 
