@@ -67,3 +67,15 @@
     ((atom y) (sub2* x y))
     (t (cons (sublis* x (car y)) (sublis* x (cdr y))))
     ))
+
+
+(defun pn (x)
+  (cond
+    ((eq (car x) 1) (cons (cons (car x) 'EINS)(pn (cdr x))))
+    ((eq (car x) 2) (cons (cons (car x) 'ZWEI)(pn (cdr x))))
+    ((eq (car x) 3) (cons (cons (car x) 'DREI)(pn(cdr x))))
+    (t nil)
+  )
+)
+
+(print (pn (list 1 2 3 2)))
