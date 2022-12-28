@@ -77,3 +77,10 @@
     (t nil)))
 
 (print (pn (list 1 2 3 2)))
+
+;; M-Expression
+;; pn[x] =
+;;   [ equal[car[x];1]->cons[cons[1;EINS];pn[cdr[x]]];
+;;     equal[car[x];2]->cons[cons[2;ZWEI];pn[cdr[x]]];
+;;     equal[car[x];3]->cons[cons[3;DREI];pn[cdr[x]]];
+;;     T->NIL] ]
