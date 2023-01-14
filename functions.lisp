@@ -84,3 +84,23 @@
 ;;     equal[car[x];2]->cons[cons[2;ZWEI];pn[cdr[x]]];
 ;;     equal[car[x];3]->cons[cons[3;DREI];pn[cdr[x]]];
 ;;     T->NIL] ]
+
+(defun numerate (x)
+  (labels ((numerate_ (index y)
+    (cond
+      ((null y) nil)
+      (t (cons (cons index (car y))(numerate_ (1+ index) (cdr y))))
+    ))) 
+  (numerate_ 1 x)))
+
+(print (numerate (list 'a 'b 'c)))
+
+;; M-Expression
+;; numerate_ [x;y] =
+;;   [ equal[y;NIL]->NIL;
+;;     T->cons[cons[x;car[y]];numerate_[plus[1;x];cdr[y]]] ]
+
+;; numerate[x] = numerate_[1;x]
+
+
+(print (maplist #'(lambda (x) (cons 'NUM (car x))) (list 'a 'b 'c)))
