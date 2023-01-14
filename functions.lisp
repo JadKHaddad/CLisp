@@ -104,3 +104,15 @@
 
 
 (print (maplist #'(lambda (x) (cons 'NUM (car x))) (list 'a 'b 'c)))
+
+
+;; TODO: Tabs!
+(defun printlist (x)
+  (cond
+    ((null x) nil)
+    ((atom (car x)) (print "(") (print  (car x)) (printlist (cdr x))  (print ")"))
+
+    (t (printlist (car x)) (printlist (cdr x)))
+    ))
+
+(printlist (list "1" (list "2" "3") "4"))
